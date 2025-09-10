@@ -22,7 +22,7 @@ export default function Step({ step, currentStep, maxSteps }: StepperProps) {
         className={cn(
           "rounded-full border-gray-300 border-2 py-2 px-[14px] flex justify-center items-center",
           status === "complete" && "bg-blue-600 px-[10px]",
-          currentStep > maxSteps && "py-[10px]"
+          (currentStep > maxSteps || status === "complete") && "py-[10px]"
         )}
         initial={false}
         animate={status}
