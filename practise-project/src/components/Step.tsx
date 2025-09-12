@@ -20,8 +20,10 @@ export default function Step({ step, currentStep, maxSteps }: StepperProps) {
     <div className="relative">
       <motion.div
         animate={status}
+        initial={{ opacity: 0 }}
         variants={{
           active: {
+            opacity: 1,
             scale: 1,
             transition: {
               delay: 0,
@@ -30,6 +32,9 @@ export default function Step({ step, currentStep, maxSteps }: StepperProps) {
           },
           complete: {
             scale: 1.3,
+          },
+          inactive: {
+            opacity: 0,
           },
         }}
         transition={{
