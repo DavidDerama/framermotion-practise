@@ -107,9 +107,9 @@ export default function EmailSidebar() {
 
   return (
     <div className="bg-[#f2f2f2] h-full border-[#e5e5e5] border-r w-2/5 flex flex-col">
-      <div className="pl-2 py-2 border-b-2 border-[#e5e5e5]">
+      <div className="pl-2 py-2 border-b border-[#e5e5e5]">
         <Button size={"icon"} variant={"ghost"} onClick={addMessage}>
-          <Mail />
+          <Mail color="#6E6E6E" />
         </Button>
       </div>
       <div className="flex-1 min-h-0 overflow-y-auto">
