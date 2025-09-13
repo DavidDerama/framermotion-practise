@@ -76,7 +76,7 @@ export default function EmailSidebar() {
         if (itemAlreadyInMessages) {
           continue;
         } else {
-          newArr.push({ id, ...randomMessageItem });
+          newArr.unshift({ id, ...randomMessageItem });
           break;
         }
       }

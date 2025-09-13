@@ -1,3 +1,5 @@
+import { motion } from "motion/react";
+
 type MesssageItemProps = {
   id: number;
   heading: string;
@@ -12,7 +14,11 @@ export default function MesssageItem({
   archiveMessage,
 }: MesssageItemProps) {
   return (
-    <li className="list-none">
+    <motion.li
+      initial={{ opacity: 0, height: 0 }}
+      animate={{ opacity: 1, height: "auto" }}
+      className="list-none"
+    >
       <button
         className="block w-full px-2 py-4 overflow-hidden text-left rounded-xl hover:bg-gray-200"
         onClick={() => archiveMessage(id)}
@@ -24,6 +30,6 @@ export default function MesssageItem({
           {description}
         </p>
       </button>
-    </li>
+    </motion.li>
   );
 }
