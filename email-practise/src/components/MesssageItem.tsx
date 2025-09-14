@@ -1,18 +1,22 @@
+import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 
 type MesssageItemProps = {
   id: number;
   heading: string;
   description: string;
-  archiveMessage: (id: number) => void;
+  selectMessage: (id: number) => void;
+  selectedMessages: Number[];
 };
 
 export default function MesssageItem({
   id,
   heading,
   description,
-  archiveMessage,
+  selectMessage,
+  selectedMessages,
 }: MesssageItemProps) {
+  const isMessageSelected = selectedMessages.includes(id);
   return (
     <motion.li
       initial={{ opacity: 0, height: 0 }}
@@ -28,8 +32,11 @@ export default function MesssageItem({
     >
       <div className="py-0.5">
         <button
-          className="block w-full px-2 py-4 overflow-hidden text-left rounded-xl hover:bg-gray-200"
-          onClick={() => archiveMessage(id)}
+          className={cn(
+            "block w-full px-2 py-4 overflow-hidden text-left rounded-xl hover:bg-gray-200",
+            isMessageSelected && "bg-gray-200"
+          )}
+          onClick={() => selectMessage(id)}
         >
           <p className="block truncate font-bold text-[#4E4E4E] text-sm overflow-hidden">
             {heading}

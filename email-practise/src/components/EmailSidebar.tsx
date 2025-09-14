@@ -1,4 +1,4 @@
-import { Mail } from "lucide-react";
+import { Archive, Mail } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import MesssageItem from "./MesssageItem";
@@ -24,6 +24,11 @@ let titles = [
 
 export default function EmailSidebar() {
   const [messages, setMessages] = useState(titles);
+  const [selectedMessages, setSelectedMessages] = useState<Number[]>([]);
+
+  function selectMessage(id: number) {
+    setSelectedMessages((prev) => [...prev, id]);
+  }
 
   function addMessage() {
     const randomMessageArr = [
@@ -86,11 +91,15 @@ export default function EmailSidebar() {
     });
   }
 
-  function archiveMessage(id: number) {
+  function archiveMessages() {
     setMessages((prev) => {
-      const filteredArr = prev.filter((item) => item.id !== id);
+      const filteredArr = prev.filter((item) => {
+        return !selectedMessages.includes(item.id);
+      });
+
       return filteredArr;
     });
+    setSelectedMessages([]);
   }
 
   const messagesEl = messages.map((item, index) => {
@@ -101,22 +110,25 @@ export default function EmailSidebar() {
         heading={heading}
         description={description}
         key={index}
-        archiveMessage={archiveMessage}
+        selectMessage={selectMessage}
+        selectedMessages={selectedMessages}
       />
     );
   });
 
   return (
     <div className="bg-[#f2f2f2] h-full border-[#e5e5e5] border-r w-2/5 flex flex-col">
-      <div className="pl-2 py-2 border-b border-[#e5e5e5]">
+      <div className="px-2 py-2 border-b border-[#e5e5e5] flex justify-between">
         <Button size={"icon"} variant={"ghost"} onClick={addMessage}>
           <Mail color="#6E6E6E" />
+        </Button>
+        <Button size={"icon"} variant={"ghost"} onClick={archiveMessages}>
+          <Archive color="#6E6E6E" />
         </Button>
       </div>
       <div className="flex-1 min-h-0 overflow-y-auto">
         <ul className="flex flex-col px-2 py-2">
-          {" "}
-          <AnimatePresence>{messagesEl}</AnimatePresence>
+          <AnimatePresence initial={false}>{messagesEl}</AnimatePresence>
         </ul>
       </div>
     </div>
