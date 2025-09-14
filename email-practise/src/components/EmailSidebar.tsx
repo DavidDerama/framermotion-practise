@@ -2,6 +2,7 @@ import { Mail } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import MesssageItem from "./MesssageItem";
+import { AnimatePresence } from "motion/react";
 
 let titles = [
   {
@@ -113,7 +114,10 @@ export default function EmailSidebar() {
         </Button>
       </div>
       <div className="flex-1 min-h-0 overflow-y-auto">
-        <ul className="flex flex-col px-2 py-2">{messagesEl}</ul>
+        <ul className="flex flex-col px-2 py-2">
+          {" "}
+          <AnimatePresence>{messagesEl}</AnimatePresence>
+        </ul>
       </div>
     </div>
   );
