@@ -6,6 +6,7 @@ type MesssageItemProps = {
   heading: string;
   description: string;
   selectMessage: (id: number) => void;
+  unSelectMessage: (id: number) => void;
   selectedMessages: Number[];
 };
 
@@ -15,6 +16,7 @@ export default function MesssageItem({
   description,
   selectMessage,
   selectedMessages,
+  unSelectMessage,
 }: MesssageItemProps) {
   const isMessageSelected = selectedMessages.includes(id);
   return (
@@ -33,15 +35,31 @@ export default function MesssageItem({
       <div className="py-0.5">
         <button
           className={cn(
-            "block w-full px-2 py-4 overflow-hidden text-left rounded-xl hover:bg-gray-200",
-            isMessageSelected && "bg-gray-200"
+            "block w-full px-2 py-4 overflow-hidden text-left rounded-xl",
+            isMessageSelected && "bg-blue-500"
           )}
-          onClick={() => selectMessage(id)}
+          onClick={() => {
+            if (!isMessageSelected) {
+              selectMessage(id);
+            } else {
+              unSelectMessage(id);
+            }
+          }}
         >
-          <p className="block truncate font-bold text-[#4E4E4E] text-sm overflow-hidden">
+          <p
+            className={cn(
+              "block truncate font-bold text-[#4E4E4E] text-sm overflow-hidden",
+              isMessageSelected && "text-white"
+            )}
+          >
             {heading}
           </p>
-          <p className="block text-xs font-normal truncate text-zinc-500">
+          <p
+            className={cn(
+              "block text-xs font-normal truncate text-zinc-500",
+              isMessageSelected && "text-white"
+            )}
+          >
             {description}
           </p>
         </button>

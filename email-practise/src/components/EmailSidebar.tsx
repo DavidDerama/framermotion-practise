@@ -30,6 +30,10 @@ export default function EmailSidebar() {
     setSelectedMessages((prev) => [...prev, id]);
   }
 
+  function unSelectMessage(id: number) {
+    setSelectedMessages((prev) => prev.filter((item) => item !== id));
+  }
+
   function addMessage() {
     const randomMessageArr = [
       {
@@ -111,6 +115,7 @@ export default function EmailSidebar() {
         description={description}
         key={index}
         selectMessage={selectMessage}
+        unSelectMessage={unSelectMessage}
         selectedMessages={selectedMessages}
       />
     );
