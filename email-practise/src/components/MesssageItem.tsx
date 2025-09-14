@@ -35,7 +35,7 @@ export default function MesssageItem({
       <div className="py-0.5">
         <button
           className={cn(
-            "block w-full px-2 py-4 overflow-hidden text-left rounded-xl",
+            "block w-full px-2 py-4 overflow-hidden text-left rounded-lg",
             isMessageSelected && "bg-blue-500"
           )}
           onClick={() => {
