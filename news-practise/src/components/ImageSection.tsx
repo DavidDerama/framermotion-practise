@@ -1,5 +1,4 @@
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
-import React from "react";
 import { Skeleton } from "./ui/skeleton";
 
 export default function ImageSection() {

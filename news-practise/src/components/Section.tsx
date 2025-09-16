@@ -8,7 +8,7 @@ type SectionProps = {
 
 export default function Section({ children, className }: SectionProps) {
   return (
-    <section className={cn("max-w-screen-2xl w-full px-4 mx-auto", className)}>
+    <section className={cn("max-w-screen-xl w-full px-4 mx-auto", className)}>
       {children}
     </section>
   );

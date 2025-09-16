@@ -5,9 +5,9 @@ import { Skeleton } from "./ui/skeleton";
 
 export default function Main() {
   return (
-    <main className="flex flex-col flex-1 py-24">
-      <Section className="flex flex-col gap-10">
-        <Skeleton className="w-2/5 h-10" />
+    <main className="flex flex-col flex-1 py-16">
+      <Section className="flex flex-col gap-8">
+        <Skeleton className="h-10 max-w-72" />
         <TextSectionSkeleton />
         <TextSectionSkeleton />
         <ImageSection />
