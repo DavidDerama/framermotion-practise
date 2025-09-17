@@ -1,6 +1,8 @@
+import { useScroll } from "motion/react";
 import Section from "./Section";
 
 export default function Header() {
+  let { scrollY } = useScroll();
   return (
     <header className="fixed inset-x-0 top-0 shadow-sm bg-[#f2f2f2] z-50">
       <Section className="flex items-end justify-between gap-12 py-4">
