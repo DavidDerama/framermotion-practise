@@ -2,7 +2,7 @@ import Section from "./Section";
 
 export default function Header() {
   return (
-    <header className="fixed inset-x-0 top-0">
+    <header className="fixed inset-x-0 top-0 shadow-sm bg-[#f2f2f2] z-50">
       <Section className="flex items-end justify-between gap-12 py-4">
         <p className="relative pl-5 text-3xl font-bold text-[#2e2e2e]">
           <span className="absolute left-0 text-sm font-medium -rotate-90 bottom-[6px]">
