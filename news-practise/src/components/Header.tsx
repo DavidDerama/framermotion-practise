@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useScroll, useTransform } from "motion/react";
+import { motion, useMotionValue, useScroll } from "motion/react";
 import Section from "./Section";
 import { useEffect } from "react";
 
