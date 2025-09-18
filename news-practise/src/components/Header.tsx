@@ -1,29 +1,45 @@
-import { motion, useMotionValue, useScroll } from "motion/react";
+import { motion, useMotionValue, useScroll, useTransform } from "motion/react";
 import Section from "./Section";
 import { useEffect } from "react";
 
-export default function Header() {
-  let { scrollY } = useScroll();
-  let height = useMotionValue(64);
-  let opacity = useMotionValue(1);
+function clamp(number: number, min: number, max: number): number {
+  return Math.min(Math.max(number, min), max);
+}
 
-  function clamp(number: number, min: number, max: number): number {
-    return Math.min(Math.max(number, min), max);
-  }
+function useBoundedScroll(bounds: number) {
+  let { scrollY } = useScroll();
+  let scrollYBounded = useMotionValue(0);
+  let scrollYBoundedProgress = useTransform(
+    scrollYBounded,
+    [0, bounds],
+    [0, 1]
+  );
 
   useEffect(() => {
     return scrollY.on("change", (current) => {
       let previous = scrollY.getPrevious();
       if (previous) {
         let diff = current - previous;
-        let newHeight = height.get() - diff;
-        let newOpacity = opacity.get() - diff * 0.1;
+        let newScrollBounded = scrollYBounded.get() + diff;
 
-        height.set(clamp(newHeight, 64, 80));
-        opacity.set(clamp(newOpacity, 0, 1));
+        scrollYBounded.set(clamp(newScrollBounded, 0, bounds));
       }
     });
-  }, [height, scrollY, opacity]);
+  }, [bounds, scrollY, scrollYBounded]);
+
+  return { scrollYBounded, scrollYBoundedProgress };
+}
+
+export default function Header() {
+  let { scrollYBoundedProgress } = useBoundedScroll(50);
+  let height = useTransform(scrollYBoundedProgress, [0, 50], [80, 64]);
+  let opacity = useTransform(scrollYBoundedProgress, [0, 50], [1, 0]);
+
+  useEffect(() => {
+    return scrollYBoundedProgress.on("change", (current) => {
+      console.log(current);
+    });
+  }, [scrollYBoundedProgress]);
 
   return (
     <motion.header
