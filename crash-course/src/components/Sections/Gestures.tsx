@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 
 export default function Gestures() {
   return (
-    <div className="flex flex-col gap-4">
+    <section className="flex flex-col gap-4 min-h-[60vh]">
       <motion.button
         className="p-5 py-2 text-sm text-white bg-blue-700 rounded-lg hover:bg-blue-700"
         layout
@@ -15,6 +15,6 @@ export default function Gestures() {
       >
         Click Me!
       </motion.button>
-    </div>
+    </section>
   );
 }

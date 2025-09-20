@@ -3,7 +3,7 @@ import Gestures from "./components/Sections/Gestures";
 
 function App() {
   return (
-    <div className="flex items-center justify-center h-screen gap-32">
+    <div className="flex flex-col items-center min-h-screen gap-32 bg-pink-200">
       <BasicsOfMotion />
       <Gestures />
     </div>
