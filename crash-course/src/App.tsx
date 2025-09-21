@@ -1,6 +1,7 @@
 import AnimationControls from "./components/Sections/AnimationControls";
 import BasicsOfMotion from "./components/Sections/BasicsOfMotion";
 import Gestures from "./components/Sections/Gestures";
+import ViewBaseAnimations from "./components/Sections/ViewBaseAnimations";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <BasicsOfMotion />
       <Gestures />
       <AnimationControls />
+      <ViewBaseAnimations />
     </div>
   );
 }
