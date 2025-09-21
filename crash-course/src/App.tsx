@@ -1,6 +1,7 @@
 import AnimationControls from "./components/Sections/AnimationControls";
 import BasicsOfMotion from "./components/Sections/BasicsOfMotion";
 import Gestures from "./components/Sections/Gestures";
+import ScrollAnimation from "./components/Sections/ScrollAnimation";
 import ViewBaseAnimations from "./components/Sections/ViewBaseAnimations";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <Gestures />
       <AnimationControls />
       <ViewBaseAnimations />
+      <ScrollAnimation />
     </div>
   );
 }
