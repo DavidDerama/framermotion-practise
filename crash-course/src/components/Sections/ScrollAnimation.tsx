@@ -2,9 +2,7 @@ import { motion, useScroll, useSpring, useTransform } from "motion/react";
 
 export default function ScrollAnimation() {
   const { scrollYProgress } = useScroll();
-
   const scaleX = useSpring(scrollYProgress);
-
   const background = useTransform(
     scrollYProgress,
     [0, 1],
@@ -16,7 +14,6 @@ export default function ScrollAnimation() {
       <motion.div
         className="fixed top-0 w-screen h-10"
         style={{
-          // scaleX: scrollYProgress,
           scaleX: scaleX,
           transformOrigin: "left",
           background: background,
