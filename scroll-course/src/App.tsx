@@ -4,7 +4,6 @@ import UseScrollAdvanced from "./components/UseScrollAdvanced";
 import UseScrollBasic from "./components/UseScrollBasic";
 import UseScrollWithContainer from "./components/UseScrollWithContainer";
 import WhileInView from "./components/WhileInView";
-
 function App() {
   return (
     <div className="flex flex-col min-h-screen overflow-x-hidden">
