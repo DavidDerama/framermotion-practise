@@ -1,6 +1,6 @@
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { Button } from "./ui/button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Header() {
   const { scrollY } = useScroll();

@@ -6,8 +6,6 @@ export default function UseScrollAdvanced() {
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
-    // offset: ["start end", "end start"],
-    // offset: ["start start", "end start"],
     offset: ["center", "end start"],
   });
 
